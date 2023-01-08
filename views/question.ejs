@@ -18,6 +18,18 @@
                 </form>
             </div>
         </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2>Respostas</h2>
+            </div>
+            <div class="card-body">
+                <% respostas.forEach(resposta => { %>
+                    <h5> <%= resposta.conteudo %>  </h5>
+                    <hr>
+                <% }); %>
+            </div>
+        </div>
     </div>
 
     <%- include('./partials/footer.ejs') %>

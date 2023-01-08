@@ -56,7 +56,13 @@ app.get("/question/:id", (req, res) => {
         where: { id }
     }).then(pergunta => {
         if(pergunta != undefined) {
-            res.render("question", { pergunta })
+            Resposta.findAll({
+                raw: true,
+                where: { id_pergunta: id },
+                order: [["id", "DESC"]]
+            }).then(respostas => {
+                res.render("question", { pergunta, respostas })
+            })
         }
         else {
             res.redirect("/");
@@ -80,5 +86,5 @@ app.post("/response", (req, res) => {
 
 const port = 3000;
 app.listen(port, () => {
-    console.log("SERVIDOR EXECUTANDO NA PORTA " + port);
+    console.log("Servidor executando na porta", port);
 });
