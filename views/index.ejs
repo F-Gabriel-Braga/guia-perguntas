@@ -6,7 +6,7 @@
     <div class="container">
         <div class="title-container mt-3">
             <h1>Lista de perguntas</h1>
-            <a href="/new/question" class="btn btn-primary">Perguntar</a>
+            <a href="/question/new" class="btn btn-primary">Perguntar</a>
         </div>
         <hr>
         <% perguntas.forEach(pergunta => { %>
@@ -16,7 +16,7 @@
                     <%= pergunta.descricao %>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary">Responder</button>
+                    <a href="/question/<%= pergunta.id %>" class="btn btn-primary">Responder</a>
                 </div>
             </div>
         <% }); %> 

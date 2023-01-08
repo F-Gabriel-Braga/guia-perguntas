@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('./partials/header.ejs') %>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <div class="container">
+        <div class="card mt-4">
+            <div class="card-header">
+                <h2>Responder pergunta</h2>
+            </div>
+            <div class="card-body">
+                <h3>(<%= pergunta.titulo %>) <%= pergunta.descricao %></h3>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
