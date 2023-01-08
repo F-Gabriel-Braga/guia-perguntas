@@ -67,6 +67,17 @@ app.get("/question/:id", (req, res) => {
     });
 });
 
+app.post("/response", (req, res) => {
+    const id_pergunta = req.body.id_question;
+    const conteudo = req.body.content;
+    Resposta.create({ conteudo, id_pergunta }).then(() => {
+        res.redirect(`/question/${id_pergunta}`);
+    }).catch(error => {
+        res.send("Erro ao responder pergunta.");
+        console.error(error);
+    })
+})
+
 const port = 3000;
 app.listen(port, () => {
     console.log("SERVIDOR EXECUTANDO NA PORTA " + port);
