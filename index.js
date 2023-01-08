@@ -2,12 +2,13 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require('./database/database');
+const perguntaModel = require('./database/Pergunta')
 
 // database
 connection.authenticate().then(() => {
     console.log("Aplicação conectada com banco de dados.")
 }).catch(error => {
-    console.error(error);
+    console.error("Erro ao conectar aplicação com banco de dados", error);
 })
 
 app.set('view engine', 'ejs');
