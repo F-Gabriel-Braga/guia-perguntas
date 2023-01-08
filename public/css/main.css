@@ -5,3 +5,10 @@ body {
 .navbar {
     padding: 10px 30px;
 }
+
+.title-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

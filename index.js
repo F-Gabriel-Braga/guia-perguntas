@@ -21,7 +21,14 @@ app.use(bodyParser.json());
 
 // rotas
 app.get("/", (req, res) => {
-    res.render("index");
+    Pergunta.findAll({ raw: true }).then(perguntas => {
+        res.render("index", {
+            perguntas
+        });
+    }).catch(error => {
+        res.send("Erro ao buscar perguntas.");
+        console.error(error);
+    });
 })
 
 app.get("/new/question", (req, res) => {
@@ -39,7 +46,7 @@ app.post("/new/question", (req, res) => {
     }).catch(error => {
         res.send("Erro ao cadastrar pergunta.");
         console.error(error);
-    })
+    });
 })
 
 const port = 3000;
