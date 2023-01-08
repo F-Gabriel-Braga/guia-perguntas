@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require('./database/database');
-const perguntaModel = require('./database/Pergunta')
+const Pergunta = require('./database/Pergunta')
 
 // database
 connection.authenticate().then(() => {
@@ -31,7 +31,15 @@ app.get("/new/question", (req, res) => {
 app.post("/new/question", (req, res) => {
     const title = req.body.title;
     const question = req.body.question;
-    res.send("Pergunta cadastrada!" + title + question);
+    Pergunta.create({
+        titulo: title,
+        descricao: question
+    }).then(() => {
+        res.redirect("/")
+    }).catch(error => {
+        res.send("Erro ao cadastrar pergunta.");
+        console.error(error);
+    })
 })
 
 const port = 3000;
